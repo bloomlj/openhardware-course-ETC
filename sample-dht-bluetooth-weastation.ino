@@ -1,14 +1,14 @@
 /*　
- * 西南交通大学工程训练课程＿开源硬件编程
- * 蓝牙温湿度计
- * 
+ * 开源硬件编程课程
+ * 温湿度计（支持蓝牙）
+ * 作者：bloomlj
  */
 
 
 //引入DHT11模块用的dht库
 #include <dht.h>
 //引入液晶模块使用的 liquid Crystal I2C库
-#include <Wire.h> 
+#include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
 //初始化一个dht类型的实例
@@ -24,24 +24,24 @@ void setup()
   Serial.begin(9600);
   Serial.println("status,\tHumidity (%),\tTemperature (C)");
   //初始化液晶屏幕
-  lcd.init();                      // initialize the lcd 
+  lcd.init();  // initialize the lcd
 }
 
 void loop()
 {
   //读取数据
   int chk = DHT.read11(DHT11_PIN);
-  //检查是否有错误 
+  //检查是否有错误
   switch (chk)
   {
-    case DHTLIB_OK:  
-		Serial.print("OK,\t"); 
+    case DHTLIB_OK:
+		Serial.print("OK,\t");
 		break;
-    case DHTLIB_ERROR_CHECKSUM: 
-		Serial.print("Checksum error,\t"); 
+    case DHTLIB_ERROR_CHECKSUM:
+		Serial.print("Checksum error,\t");
 		break;
-    case DHTLIB_ERROR_TIMEOUT: 
-		Serial.print("Time out error,\t"); 
+    case DHTLIB_ERROR_TIMEOUT:
+		Serial.print("Time out error,\t");
 		break;
     case DHTLIB_ERROR_CONNECT:
         Serial.print("Connect error,\t");
@@ -52,8 +52,8 @@ void loop()
     case DHTLIB_ERROR_ACK_H:
         Serial.print("Ack High error,\t");
         break;
-    default: 
-		Serial.print("Unknown error,\t"); 
+    default:
+		Serial.print("Unknown error,\t");
 		break;
   }
   // 显示数据
@@ -77,6 +77,3 @@ void loop()
   //清屏幕
   lcd.clear();
 }
-//
-// END OF FILE
-//
