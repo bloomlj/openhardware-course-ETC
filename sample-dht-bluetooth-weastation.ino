@@ -15,8 +15,8 @@
 dht DHT;
 //设置DHT11传感器传输数据使用的引脚
 #define DHT11_PIN 5
-//初始化一个液晶屏幕的实例,初始化时设置地址为0x27，液晶尺寸为1602
-LiquidCrystal_I2C lcd(0x27,16,2);  // set the LCD address to 0x27 for a 16 chars and 2 line display
+//初始化一个液晶屏幕的实例,初始化时设置地址为0x3f（根据实际情况设置，国产常用0x27,0x3f），液晶尺寸为1602
+LiquidCrystal_I2C lcd(0x3f,16,2);  // set the LCD address to 0x27 for a 16 chars and 2 line display
 
 
 void setup()
